@@ -1,0 +1,116 @@
+---
+import "../styles/global.css";
+
+interface Props {
+  title?: string;
+  description?: string;
+  hasHero?: boolean;
+}
+
+const {
+  title = "Marmara Plastik Kimya",
+  description = "Marmara Plastik Kimya Sanayi ve Ticaret - Tarımsal Çözümler ve Organik Gübreler",
+  hasHero = false,
+} = Astro.props;
+const currentPath = Astro.url.pathname;
+---
+
+<!doctype html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+  </head>
+  <body>
+    <a href="#content" class="skip-link">İçeriğe atla</a>
+
+    <header class={`site-header${hasHero ? " site-header--transparent" : ""}`}>
+      <div class="container header-inner">
+        <a href="/" class="logo">
+          <img
+            src="/images/logo/marmara-kimya.png"
+            alt="Marmara Plastik Kimya"
+            width="200"
+            height="25"
+          />
+        </a>
+
+        <nav class="main-nav">
+          <ul>
+            <li>
+              <a href="/" class={currentPath === "/" ? "active" : ""}
+                >Anasayfa</a
+              >
+            </li>
+            <li>
+              <a
+                href="/hakkimizda/"
+                class={currentPath === "/hakkimizda/" ? "active" : ""}
+                >Hakkımızda</a
+              >
+            </li>
+            <li>
+              <a
+                href="/urunler/"
+                class={currentPath === "/urunler/" ? "active" : ""}>Ürünler</a
+              >
+            </li>
+            <li>
+              <a
+                href="/iletisim/"
+                class={currentPath === "/iletisim/" ? "active" : ""}>İletisim</a
+              >
+            </li>
+          </ul>
+        </nav>
+
+        <button
+          class="mobile-menu-toggle"
+          aria-label="Menüyü aç/kapat"
+          onclick="document.querySelector('.main-nav').classList.toggle('mobile-open')"
+        >
+          <svg viewBox="0 0 24 28" width="24" height="28"
+            ><path
+              d="M24 21v2c0 0.547-0.453 1-1 1h-22c-0.547 0-1-0.453-1-1v-2c0-0.547 0.453-1 1-1h22c0.547 0 1 0.453 1 1zM24 13v2c0 0.547-0.453 1-1 1h-22c-0.547 0-1-0.453-1-1v-2c0-0.547 0.453-1 1-1h22c0.547 0 1 0.453 1 1zM24 5v2c0 0.547-0.453 1-1 1h-22c-0.547 0-1-0.453-1-1v-2c0-0.547 0.453-1 1-1h22c0.547 0 1 0.453 1 1z"
+            ></path></svg
+          >
+        </button>
+      </div>
+    </header>
+
+    <main id="content">
+      <slot />
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <div class="footer-nav">
+          <ul>
+            <li><a href="/">Anasayfa</a></li>
+            <li><a href="/hakkimizda/">Hakkımızda</a></li>
+            <li><a href="/urunler/">Ürünler</a></li>
+            <li><a href="/iletisim/">İletisim</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-logo">
+          <img
+            src="/images/logo/marmara-kimya.png"
+            alt="Marmara Plastik Kimya"
+            width="176"
+            height="22"
+          />
+        </div>
+
+        <div class="footer-copyright">
+          <p>©2026 Marmara kimya. Tüm hakları saklıdır.</p>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
