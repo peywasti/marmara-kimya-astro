@@ -1,17 +1,101 @@
 ---
-
+import Layout from "../layouts/Layout.astro";
+import { products } from "../data/products.js";
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<Layout title="Marmara Plastik Kimya - Anasayfa" hasHero={true}>
+  <section
+    class="hero"
+    style="background-image: url('/images/hero/marmara-hero-4.avif');"
+  >
+    <div class="container">
+      <h1>PLASTİK KİMYA</h1>
+      <h2>SANAYE VE TICARET</h2>
+    </div>
+  </section>
+
+  <section class="section section-white">
+    <div class="container">
+      <div class="feature-grid">
+        <div class="feature-block">
+          <img
+            src="/images/hero/marmara-hero-6.avif"
+            alt="Tarımsal Çözümler"
+            width="600"
+            height="375"
+            loading="lazy"
+          />
+          <h3>Tarımsal Çözümler</h3>
+          <p>
+            Modern ve sürdürülebilir tarımda, zararlılara ve hastalıklara karşı
+            yenilikçi yöntemler uygulanarak birim alanda en yüksek verim ile
+            gelir elde edilmesi amaçlanmaktadır.
+          </p>
+        </div>
+        <div class="feature-block">
+          <img
+            src="/images/hero/marmara-hero-3.avif"
+            alt="Gübre Programları"
+            width="600"
+            height="375"
+            loading="lazy"
+          />
+          <h3>Gübre Programları</h3>
+          <p>
+            Gübreleme programları bitki yetiştirme için düzenli gübre uygulaması
+            sağlar. Amaçları bitki büyümesini desteklemek, verimliliği artırmak
+            ve besin eksikliklerini önlemektir.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-light">
+    <div class="container">
+      <h2 class="text-center">Ürünler</h2>
+      <div class="product-grid">
+        {
+          products.map((product) => (
+            <div class="product-card">
+              <a href={`/urun/${product.slug}/`}>
+                <img
+                  src={product.image}
+                  alt={product.name}
+                  width="200"
+                  height="200"
+                  loading="lazy"
+                />
+              </a>
+              <h4>
+                <a href={`/urun/${product.slug}/`}>{product.name}</a>
+              </h4>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-white">
+    <div class="container">
+      <h2>Hakkımızda</h2>
+      <p>
+        Bu şirket 2013 yılında aşağıdaki türdeki ürünlerin üretimi, dağıtımı ve
+        satışını yapmak amacıyla çalışmalarına başlamıştır.
+      </p>
+      <a href="/hakkimizda/" class="btn">Devamını oku</a>
+    </div>
+  </section>
+
+  <section class="section section-light cta-section">
+    <div class="container">
+      <h2>Bizimle konuş</h2>
+      <p>
+        Sorularınız mı var? İşletmeniz, yeni ürünleriniz ve size nasıl yardımcı
+        olabileceğimiz hakkında konuşmaya her zaman açığız.
+      </p>
+      <a href="/iletisim/" class="btn">Temasta olmak</a>
+    </div>
+  </section>
+</Layout>
