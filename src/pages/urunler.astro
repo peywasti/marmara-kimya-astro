@@ -1,0 +1,102 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { products } from "../data/products.js";
+---
+
+<Layout title="Ürünler - Marmara Plastik Kimya" hasHero={true}>
+  <div
+    class="page-hero"
+    style="background-image: url('/images/hero/marmara-hero-3.avif');"
+  >
+    <div class="container">
+      <h1>Ürünler</h1>
+    </div>
+  </div>
+
+  <div class="page-content">
+    <div class="container">
+      <div class="featured-products">
+        <div class="product-detail">
+          <h3>SuperCOPP</h3>
+          <p>
+            Mantar-bakteriyel hastalıklar her türlü sera, bahçe ve dış mekan
+            bitkilerinde en zararlı ve yıkıcı hastalıklar arasında yer almakta
+            olup, zamanında müdahale ve kontrol sağlanmadığı takdirde
+            mahsullerin %100'ünü yok edebilmektedir. Bu tür hastalıklarla
+            mücadelede kimyasal bakır zehirlerinin kullanımında birçok sınırlama
+            vardır ancak Süper COPP kullanımında bu sınırlamalar yoktur çünkü
+            Süper COPP bir fungisit ve organik kültür bakterisidir.
+          </p>
+          <a href="/urun/supercopp/" class="btn">Daha fazla bilgi</a>
+        </div>
+
+        <div class="product-detail">
+          <h3>Potasgen</h3>
+          <p>
+            Potashen sıvı gübre yüksek organik gübredir (NPK 8-0-15) ve bahçe,
+            sera ve dış mekan bitkilerinde meyvenin büyüklüğünü ve kalitesini
+            artırır. Potas, elma, domates ve çilek için renklendirici gübre
+            olarak kullanılır.
+          </p>
+          <a href="/urun/potasgen/" class="btn">Daha fazla bilgi</a>
+        </div>
+
+        <div class="product-detail">
+          <h3>PF-Nematod</h3>
+          <p>
+            Nematod, her türlü sera, bahçe ve dış mekan bitkilerinde en yıkıcı
+            hastalıklardan biridir. Nematod hastalığıyla mücadelede en önemli
+            prensip, kökteki nematodu ve kök çevresindeki toprağı, diğer faydalı
+            mikroorganizmalara ve kökün kendisine zarar vermeden yok etmektir ki
+            bu da PF Nematod ile mümkündür.
+          </p>
+          <a href="/urun/pf-nematod/" class="btn">Daha fazla bilgi</a>
+        </div>
+      </div>
+
+      <h2>Diğer ürünler</h2>
+      <div class="product-grid">
+        {
+          products.slice(3).map((product) => (
+            <div class="product-card">
+              <img
+                src={product.image}
+                alt={product.name}
+                width="200"
+                height="200"
+              />
+              <h4>
+                <a href={`/urun/${product.slug}/`}>{product.name}</a>
+              </h4>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+
+  <section class="section section-light cta-section">
+    <div class="container">
+      <h2>Bizimle konuş</h2>
+      <p>
+        Sorularınız mı var? İşletmeniz, yeni ürünleriniz ve size nasıl yardımcı
+        olabileceğimiz hakkında konuşmaya her zaman açığız.
+      </p>
+      <a href="/iletisim/" class="btn">Temasta olmak</a>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .featured-products {
+    margin: 2rem 0;
+  }
+  .product-detail {
+    margin-bottom: 3rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid var(--color-border);
+  }
+  .product-detail:last-child {
+    border-bottom: none;
+  }
+</style>

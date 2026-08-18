@@ -1,0 +1,116 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title="İletişim - Marmara Plastik Kimya" hasHero={true}>
+  <div
+    class="page-hero"
+    style="background-image: url('/images/hero/marmara-hero-5.avif');"
+  >
+    <div class="container">
+      <h1>İletişim</h1>
+    </div>
+  </div>
+
+  <div class="page-content">
+    <div class="container">
+      <div class="contact-section">
+        <div class="contact-form-wrapper">
+          <h2>Temasta olmak</h2>
+          <form class="contact-form" action="#" method="POST">
+            <div class="form-group">
+              <label for="name">İsim *</label>
+              <input type="text" id="name" name="name" required />
+            </div>
+            <div class="form-group">
+              <label for="email">E-posta *</label>
+              <input type="email" id="email" name="email" required />
+            </div>
+            <div class="form-group">
+              <label for="message">Mesaj</label>
+              <textarea id="message" name="message" rows="5" required
+              ></textarea>
+            </div>
+            <button type="submit" class="btn">Göndermek</button>
+          </form>
+        </div>
+
+        <div class="contact-info">
+          <h2>Bizimle konuş</h2>
+
+          <h4>EMAIL</h4>
+          <p>
+            <a href="mailto:info@marmara-kimya.com">info@marmara-kimya.com</a>
+          </p>
+
+          <h4>PHONE NUMBER</h4>
+          <p><a href="tel:+902164421038">+90 (216) 442 10 38</a></p>
+
+          <h4>ADDRESS</h4>
+          <p>Istanbul / Kartal Yalnız Selvi Mevkii Sade Sit. No.5-11</p>
+
+          <h4>Bizi takip edin</h4>
+          <div class="social-links">
+            <a href="#" aria-label="Facebook">Facebook</a>
+            <a href="#" aria-label="Twitter">Twitter</a>
+            <a href="#" aria-label="LinkedIn">LinkedIn</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</Layout>
+
+<style>
+  .contact-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    margin-top: 2rem;
+  }
+
+  .form-group {
+    margin-bottom: 1.5rem;
+  }
+
+  .form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: var(--color-dark);
+  }
+
+  .form-group input,
+  .form-group textarea {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid var(--color-border);
+    font-family: var(--font-body);
+    font-size: 1rem;
+    background: #fafafa;
+  }
+
+  .form-group input:focus,
+  .form-group textarea:focus {
+    outline: none;
+    border-color: var(--color-primary);
+  }
+
+  .social-links {
+    display: flex;
+    gap: 1rem;
+    margin-top: 0.5rem;
+  }
+
+  .social-links a {
+    color: var(--color-primary);
+    font-weight: 600;
+  }
+
+  @media (max-width: 921px) {
+    .contact-section {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+  }
+</style>
