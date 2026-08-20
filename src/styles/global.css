@@ -269,7 +269,9 @@ img {
   content: '';
   position: absolute;
   inset: 0;
-  background: rgba(20, 38, 28, 0.2);
+  background-color: var(--color-primary);
+  opacity: 0.6;
+  transition: background-color 0.3s ease, opacity 0.3s ease;
 }
 
 .page-hero .container {
