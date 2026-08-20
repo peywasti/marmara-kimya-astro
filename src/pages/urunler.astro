@@ -16,7 +16,7 @@ import { products } from "../data/products.js";
   <div class="page-content">
     <div class="container">
       <div class="featured-products">
-        <div class="product-detail-row">
+        <div class="product-detail-row product-detail-row--right">
           <div class="product-detail-text">
             <h3>SuperCOPP</h3>
             <p>
@@ -39,7 +39,7 @@ import { products } from "../data/products.js";
           />
         </div>
 
-        <div class="product-detail-row">
+        <div class="product-detail-row product-detail-row--left">
           <img
             src="/images/products/product-potasgen.avif"
             alt="Potasgen"
@@ -59,7 +59,7 @@ import { products } from "../data/products.js";
           </div>
         </div>
 
-        <div class="product-detail-row">
+        <div class="product-detail-row product-detail-row--right">
           <div class="product-detail-text">
             <h3>PF-Nematod</h3>
             <p>
@@ -120,7 +120,6 @@ import { products } from "../data/products.js";
 <style>
   .product-detail-row {
     display: grid;
-    grid-template-columns: 1fr 400px;
     gap: 2rem;
     align-items: start;
     margin-bottom: 3rem;
@@ -130,6 +129,14 @@ import { products } from "../data/products.js";
 
   .product-detail-row:last-child {
     border-bottom: none;
+  }
+
+  .product-detail-row--left {
+    grid-template-columns: 200px 1fr;
+  }
+
+  .product-detail-row--right {
+    grid-template-columns: 1fr 200px;
   }
 
   .product-detail-row img {
@@ -142,7 +149,8 @@ import { products } from "../data/products.js";
   }
 
   @media (max-width: 921px) {
-    .product-detail-row {
+    .product-detail-row--left,
+    .product-detail-row--right {
       grid-template-columns: 1fr;
     }
 
