@@ -17,13 +17,6 @@ import { products } from "../data/products.js";
     <div class="container">
       <div class="featured-products">
         <div class="product-detail-row">
-          <img
-            src="/images/products/product-supercopp.avif"
-            alt="SuperCOPP"
-            width="200"
-            height="200"
-            loading="eager"
-          />
           <div class="product-detail-text">
             <h3>SuperCOPP</h3>
             <p>
@@ -37,16 +30,16 @@ import { products } from "../data/products.js";
             </p>
             <a href="/urun/supercopp/" class="btn">Daha fazla bilgi</a>
           </div>
-        </div>
-
-        <div class="product-detail-row">
           <img
-            src="/images/products/product-potasgen.avif"
-            alt="Potasgen"
+            src="/images/products/product-supercopp.avif"
+            alt="SuperCOPP"
             width="200"
             height="200"
             loading="eager"
           />
+        </div>
+
+        <div class="product-detail-row">
           <div class="product-detail-text">
             <h3>Potasgen</h3>
             <p>
@@ -57,16 +50,16 @@ import { products } from "../data/products.js";
             </p>
             <a href="/urun/potasgen/" class="btn">Daha fazla bilgi</a>
           </div>
-        </div>
-
-        <div class="product-detail-row">
           <img
-            src="/images/products/product-pf-nematod.avif"
-            alt="PF Nematod"
+            src="/images/products/product-potasgen.avif"
+            alt="Potasgen"
             width="200"
             height="200"
             loading="eager"
           />
+        </div>
+
+        <div class="product-detail-row">
           <div class="product-detail-text">
             <h3>PF-Nematod</h3>
             <p>
@@ -78,6 +71,13 @@ import { products } from "../data/products.js";
             </p>
             <a href="/urun/pf-nematod/" class="btn">Daha fazla bilgi</a>
           </div>
+          <img
+            src="/images/products/product-pf-nematod.avif"
+            alt="PF Nematod"
+            width="200"
+            height="200"
+            loading="eager"
+          />
         </div>
       </div>
 
@@ -120,7 +120,7 @@ import { products } from "../data/products.js";
 <style>
   .product-detail-row {
     display: grid;
-    grid-template-columns: 200px 1fr;
+    grid-template-columns: 1fr 200px;
     gap: 2rem;
     align-items: start;
     margin-bottom: 3rem;
