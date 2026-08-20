@@ -16,55 +16,85 @@ import { products } from "../data/products.js";
   <div class="page-content">
     <div class="container">
       <div class="featured-products">
-        <div class="product-detail">
-          <h3>SuperCOPP</h3>
-          <p>
-            Mantar-bakteriyel hastalıklar her türlü sera, bahçe ve dış mekan
-            bitkilerinde en zararlı ve yıkıcı hastalıklar arasında yer almakta
-            olup, zamanında müdahale ve kontrol sağlanmadığı takdirde
-            mahsullerin %100'ünü yok edebilmektedir. Bu tür hastalıklarla
-            mücadelede kimyasal bakır zehirlerinin kullanımında birçok sınırlama
-            vardır ancak Süper COPP kullanımında bu sınırlamalar yoktur çünkü
-            Süper COPP bir fungisit ve organik kültür bakterisidir.
-          </p>
-          <a href="/urun/supercopp/" class="btn">Daha fazla bilgi</a>
+        <div class="product-detail-row">
+          <img
+            src="/images/products/product-supercopp.avif"
+            alt="SuperCOPP"
+            width="200"
+            height="200"
+            loading="eager"
+          />
+          <div class="product-detail-text">
+            <h3>SuperCOPP</h3>
+            <p>
+              Mantar-bakteriyel hastalıklar her türlü sera, bahçe ve dış mekan
+              bitkilerinde en zararlı ve yıkıcı hastalıklar arasında yer almakta
+              olup, zamanında müdahale ve kontrol sağlanmadığı takdirde
+              mahsullerin %100'ünü yok edebilmektedir. Bu tür hastalıklarla
+              mücadelede kimyasal bakır zehirlerinin kullanımında birçok sınırlama
+              vardır ancak Süper COPP kullanımında bu sınırlamalar yoktur çünkü
+              Süper COPP bir fungisit ve organik kültür bakterisidir.
+            </p>
+            <a href="/urun/supercopp/" class="btn">Daha fazla bilgi</a>
+          </div>
         </div>
 
-        <div class="product-detail">
-          <h3>Potasgen</h3>
-          <p>
-            Potashen sıvı gübre yüksek organik gübredir (NPK 8-0-15) ve bahçe,
-            sera ve dış mekan bitkilerinde meyvenin büyüklüğünü ve kalitesini
-            artırır. Potas, elma, domates ve çilek için renklendirici gübre
-            olarak kullanılır.
-          </p>
-          <a href="/urun/potasgen/" class="btn">Daha fazla bilgi</a>
+        <div class="product-detail-row">
+          <img
+            src="/images/products/product-potasgen.avif"
+            alt="Potasgen"
+            width="200"
+            height="200"
+            loading="eager"
+          />
+          <div class="product-detail-text">
+            <h3>Potasgen</h3>
+            <p>
+              Potashen sıvı gübre yüksek organik gübredir (NPK 8-0-15) ve bahçe,
+              sera ve dış mekan bitkilerinde meyvenin büyüklüğünü ve kalitesini
+              artırır. Potas, elma, domates ve çilek için renklendirici gübre
+              olarak kullanılır.
+            </p>
+            <a href="/urun/potasgen/" class="btn">Daha fazla bilgi</a>
+          </div>
         </div>
 
-        <div class="product-detail">
-          <h3>PF-Nematod</h3>
-          <p>
-            Nematod, her türlü sera, bahçe ve dış mekan bitkilerinde en yıkıcı
-            hastalıklardan biridir. Nematod hastalığıyla mücadelede en önemli
-            prensip, kökteki nematodu ve kök çevresindeki toprağı, diğer faydalı
-            mikroorganizmalara ve kökün kendisine zarar vermeden yok etmektir ki
-            bu da PF Nematod ile mümkündür.
-          </p>
-          <a href="/urun/pf-nematod/" class="btn">Daha fazla bilgi</a>
+        <div class="product-detail-row">
+          <img
+            src="/images/products/product-pf-nematod.avif"
+            alt="PF Nematod"
+            width="200"
+            height="200"
+            loading="eager"
+          />
+          <div class="product-detail-text">
+            <h3>PF-Nematod</h3>
+            <p>
+              Nematod, her türlü sera, bahçe ve dış mekan bitkilerinde en yıkıcı
+              hastalıklardan biridir. Nematod hastalığıyla mücadelede en önemli
+              prensip, kökteki nematodu ve kök çevresindeki toprağı, diğer faydalı
+              mikroorganizmalara ve kökün kendisine zarar vermeden yok etmektir ki
+              bu da PF Nematod ile mümkündür.
+            </p>
+            <a href="/urun/pf-nematod/" class="btn">Daha fazla bilgi</a>
+          </div>
         </div>
       </div>
 
       <h2>Diğer ürünler</h2>
-      <div class="product-grid">
+      <div class="product-grid product-grid--3">
         {
           products.slice(3).map((product) => (
             <div class="product-card">
-              <img
-                src={product.image}
-                alt={product.name}
-                width="200"
-                height="200"
-              />
+              <a href={`/urun/${product.slug}/`}>
+                <img
+                  src={product.image}
+                  alt={product.name}
+                  width="200"
+                  height="200"
+                  loading="lazy"
+                />
+              </a>
               <h4>
                 <a href={`/urun/${product.slug}/`}>{product.name}</a>
               </h4>
@@ -88,15 +118,44 @@ import { products } from "../data/products.js";
 </Layout>
 
 <style>
-  .featured-products {
-    margin: 2rem 0;
-  }
-  .product-detail {
+  .product-detail-row {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 2rem;
+    align-items: start;
     margin-bottom: 3rem;
     padding-bottom: 2rem;
     border-bottom: 1px solid var(--color-border);
   }
-  .product-detail:last-child {
+
+  .product-detail-row:last-child {
     border-bottom: none;
+  }
+
+  .product-detail-row img {
+    object-fit: contain;
+    width: 100%;
+  }
+
+  .product-grid--3 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @media (max-width: 921px) {
+    .product-detail-row {
+      grid-template-columns: 1fr;
+    }
+
+    .product-detail-row img {
+      max-width: 200px;
+      margin: 0 auto;
+      display: block;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .product-grid--3 {
+      grid-template-columns: repeat(2, 1fr);
+    }
   }
 </style>
