@@ -217,6 +217,14 @@ img {
   padding: 3em 0;
 }
 
+/* Product detail image */
+.product-detail-image {
+  display: block;
+  max-width: 280px;
+  margin: 0 auto 2rem;
+  object-fit: contain;
+}
+
 /* Hero */
 .hero {
   position: relative;
