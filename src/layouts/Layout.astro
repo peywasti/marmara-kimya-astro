@@ -13,6 +13,7 @@ const {
   hasHero = false,
 } = Astro.props;
 const currentPath = Astro.url.pathname;
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 ---
 
 <!doctype html>
@@ -21,13 +22,35 @@ const currentPath = Astro.url.pathname;
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="icon" href="/favicon.ico" />
     <meta name="generator" content={Astro.generator} />
+    <link rel="canonical" href={canonicalURL} />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Marmara Plastik Kimya" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:locale" content="tr_TR" />
+    <meta
+      property="og:image"
+      content={new URL("/images/logo/marmara-kimya.png", Astro.site)}
+    />
+    <meta name="twitter:card" content="summary" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Karla:wght@400;600;700&family=Rubik:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
     <title>{title}</title>
   </head>
   <body>
-    <a href="#content" class="skip-link">İçeriğe atla</a>
+    <a href="#content" class="skip-link">
+      İçeriğe atla
+    </a>
 
     <header class={`site-header${hasHero ? " site-header--transparent" : ""}`}>
       <div class="container header-inner">
@@ -40,31 +63,43 @@ const currentPath = Astro.url.pathname;
           />
         </a>
 
-        <nav class="main-nav">
+        <nav class="main-nav" id="main-nav" aria-label="Ana menü">
           <ul>
             <li>
-              <a href="/" class={currentPath === "/" ? "active" : ""}
-                >Anasayfa</a
+              <a
+                href="/"
+                aria-current={currentPath === "/" ? "page" : undefined}
               >
+                Anasayfa
+              </a>
             </li>
             <li>
               <a
                 href="/hakkimizda/"
-                class={currentPath === "/hakkimizda/" ? "active" : ""}
-                >Hakkımızda</a
+                aria-current={
+                  currentPath === "/hakkimizda/" ? "page" : undefined
+                }
               >
+                Hakkımızda
+              </a>
             </li>
             <li>
               <a
                 href="/urunler/"
-                class={currentPath === "/urunler/" ? "active" : ""}>Ürünler</a
+                aria-current={
+                  currentPath.startsWith("/urun") ? "page" : undefined
+                }
               >
+                Ürünler
+              </a>
             </li>
             <li>
               <a
                 href="/iletisim/"
-                class={currentPath === "/iletisim/" ? "active" : ""}>İletisim</a
+                aria-current={currentPath === "/iletisim/" ? "page" : undefined}
               >
+                İletisim
+              </a>
             </li>
           </ul>
         </nav>
@@ -72,13 +107,12 @@ const currentPath = Astro.url.pathname;
         <button
           class="mobile-menu-toggle"
           aria-label="Menüyü aç/kapat"
-          onclick="document.querySelector('.main-nav').classList.toggle('mobile-open')"
+          aria-expanded="false"
+          aria-controls="main-nav"
         >
-          <svg viewBox="0 0 24 28" width="24" height="28"
-            ><path
-              d="M24 21v2c0 0.547-0.453 1-1 1h-22c-0.547 0-1-0.453-1-1v-2c0-0.547 0.453-1 1-1h22c0.547 0 1 0.453 1 1zM24 13v2c0 0.547-0.453 1-1 1h-22c-0.547 0-1-0.453-1-1v-2c0-0.547 0.453-1 1-1h22c0.547 0 1 0.453 1 1zM24 5v2c0 0.547-0.453 1-1 1h-22c-0.547 0-1-0.453-1-1v-2c0-0.547 0.453-1 1-1h22c0.547 0 1 0.453 1 1z"
-            ></path></svg
-          >
+          <svg viewBox="0 0 24 28" width="24" height="28">
+            <path d="M24 21v2c0 0.547-0.453 1-1 1h-22c-0.547 0-1-0.453-1-1v-2c0-0.547 0.453-1 1-1h22c0.547 0 1 0.453 1 1zM24 13v2c0 0.547-0.453 1-1 1h-22c-0.547 0-1-0.453-1-1v-2c0-0.547 0.453-1 1-1h22c0.547 0 1 0.453 1 1zM24 5v2c0 0.547-0.453 1-1 1h-22c-0.547 0-1-0.453-1-1v-2c0-0.547 0.453-1 1-1h22c0.547 0 1 0.453 1 1z"></path>
+          </svg>
         </button>
       </div>
     </header>
@@ -91,10 +125,18 @@ const currentPath = Astro.url.pathname;
       <div class="container footer-inner">
         <div class="footer-nav">
           <ul>
-            <li><a href="/">Anasayfa</a></li>
-            <li><a href="/hakkimizda/">Hakkımızda</a></li>
-            <li><a href="/urunler/">Ürünler</a></li>
-            <li><a href="/iletisim/">İletisim</a></li>
+            <li>
+              <a href="/">Anasayfa</a>
+            </li>
+            <li>
+              <a href="/hakkimizda/">Hakkımızda</a>
+            </li>
+            <li>
+              <a href="/urunler/">Ürünler</a>
+            </li>
+            <li>
+              <a href="/iletisim/">İletisim</a>
+            </li>
           </ul>
         </div>
 
@@ -112,5 +154,30 @@ const currentPath = Astro.url.pathname;
         </div>
       </div>
     </footer>
+
+    <script>
+      const toggle = document.querySelector<HTMLButtonElement>(
+        ".mobile-menu-toggle",
+      );
+      const nav = document.getElementById("main-nav");
+
+      if (toggle && nav) {
+        const setOpen = (open: boolean) => {
+          nav.classList.toggle("mobile-open", open);
+          toggle.setAttribute("aria-expanded", String(open));
+        };
+
+        toggle.addEventListener("click", () => {
+          setOpen(!nav.classList.contains("mobile-open"));
+        });
+
+        // Close the menu when a navigation link is chosen.
+        nav.addEventListener("click", (event) => {
+          if (event.target instanceof Element && event.target.closest("a")) {
+            setOpen(false);
+          }
+        });
+      }
+    </script>
   </body>
 </html>
