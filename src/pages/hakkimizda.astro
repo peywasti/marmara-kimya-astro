@@ -1,5 +1,6 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import CTA from "../components/CTA.astro";
 ---
 
 <Layout title="Hakkımızda - Marmara Plastik Kimya" hasHero={true}>
@@ -14,7 +15,7 @@ import Layout from "../layouts/Layout.astro";
 
   <div class="page-content">
     <div class="container">
-      <h3>MARMARA PLASTİK KİMYA SANAYİ VE TİCARET LİMİTED ŞİRKETİ</h3>
+      <h2>MARMARA PLASTİK KİMYA SANAYİ VE TİCARET LİMİTED ŞİRKETİ</h2>
 
       <p>
         Plastikten mamul hortum, boru, sulama sistemleri, oluklar, vana, sistem
@@ -49,14 +50,5 @@ import Layout from "../layouts/Layout.astro";
     </div>
   </div>
 
-  <section class="section section-light cta-section">
-    <div class="container">
-      <h2>Bizimle konuş</h2>
-      <p>
-        Sorularınız mı var? İşletmeniz, yeni ürünleriniz ve size nasıl yardımcı
-        olabileceğimiz hakkında konuşmaya her zaman açığız.
-      </p>
-      <a href="/iletisim/" class="btn">Temasta olmak</a>
-    </div>
-  </section>
+  <CTA />
 </Layout>
