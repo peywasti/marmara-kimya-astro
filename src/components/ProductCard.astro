@@ -1,0 +1,26 @@
+---
+interface Props {
+  slug: string;
+  name: string;
+  image: string;
+  eager?: boolean;
+}
+
+const { slug, name, image, eager = false } = Astro.props;
+const href = `/urun/${slug}/`;
+---
+
+<div class="product-card">
+  <a href={href}>
+    <img
+      src={image}
+      alt={name}
+      width="200"
+      height="200"
+      loading={eager ? "eager" : "lazy"}
+    />
+  </a>
+  <h3>
+    <a href={href}>{name}</a>
+  </h3>
+</div>

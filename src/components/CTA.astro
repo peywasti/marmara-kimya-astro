@@ -1,0 +1,21 @@
+---
+interface Props {
+  heading?: string;
+  text?: string;
+  buttonLabel?: string;
+}
+
+const {
+  heading = "Bizimle konuş",
+  text = "Sorularınız mı var? İşletmeniz, yeni ürünleriniz ve size nasıl yardımcı olabileceğimiz hakkında konuşmaya her zaman açığız.",
+  buttonLabel = "Temasta olmak",
+} = Astro.props;
+---
+
+<section class="section section-light cta-section">
+  <div class="container">
+    <h2>{heading}</h2>
+    <p>{text}</p>
+    <a href="/iletisim/" class="btn">{buttonLabel}</a>
+  </div>
+</section>
