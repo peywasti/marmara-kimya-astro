@@ -1,6 +1,8 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import { products } from "../data/products.js";
+import ProductCard from "../components/ProductCard.astro";
+import CTA from "../components/CTA.astro";
 ---
 
 <Layout title="Marmara Plastik Kimya - Anasayfa" hasHero={true}>
@@ -10,7 +12,7 @@ import { products } from "../data/products.js";
   >
     <div class="container">
       <h1>PLASTİK KİMYA</h1>
-      <h2>SANAYE VE TICARET</h2>
+      <p class="hero-subtitle">SANAYİ VE TİCARET</p>
     </div>
   </section>
 
@@ -55,24 +57,13 @@ import { products } from "../data/products.js";
     <div class="container">
       <h2 class="text-center">Ürünler</h2>
       <div class="product-grid">
-        {
-          products.map((product) => (
-            <div class="product-card">
-              <a href={`/urun/${product.slug}/`}>
-                <img
-                  src={product.image}
-                  alt={product.name}
-                  width="200"
-                  height="200"
-                  loading="lazy"
-                />
-              </a>
-              <h4>
-                <a href={`/urun/${product.slug}/`}>{product.name}</a>
-              </h4>
-            </div>
-          ))
-        }
+        {products.map((product) => (
+          <ProductCard
+            slug={product.slug}
+            name={product.name}
+            image={product.image}
+          />
+        ))}
       </div>
     </div>
   </section>
@@ -84,18 +75,11 @@ import { products } from "../data/products.js";
         Bu şirket 2013 yılında aşağıdaki türdeki ürünlerin üretimi, dağıtımı ve
         satışını yapmak amacıyla çalışmalarına başlamıştır.
       </p>
-      <a href="/hakkimizda/" class="btn">Devamını oku</a>
+      <a href="/hakkimizda/" class="btn">
+        Devamını oku
+      </a>
     </div>
   </section>
 
-  <section class="section section-light cta-section">
-    <div class="container">
-      <h2>Bizimle konuş</h2>
-      <p>
-        Sorularınız mı var? İşletmeniz, yeni ürünleriniz ve size nasıl yardımcı
-        olabileceğimiz hakkında konuşmaya her zaman açığız.
-      </p>
-      <a href="/iletisim/" class="btn">Temasta olmak</a>
-    </div>
-  </section>
+  <CTA />
 </Layout>

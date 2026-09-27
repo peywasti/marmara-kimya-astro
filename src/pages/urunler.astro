@@ -1,6 +1,8 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import { products } from "../data/products.js";
+import ProductCard from "../components/ProductCard.astro";
+import CTA from "../components/CTA.astro";
 ---
 
 <Layout title="Ürünler - Marmara Plastik Kimya" hasHero={true}>
@@ -18,7 +20,7 @@ import { products } from "../data/products.js";
       <div class="featured-products">
         <div class="product-detail-row product-detail-row--right">
           <div class="product-detail-text">
-            <h3>SuperCOPP</h3>
+            <h2>SuperCOPP</h2>
             <p>
               Mantar-bakteriyel hastalıklar her türlü sera, bahçe ve dış mekan
               bitkilerinde en zararlı ve yıkıcı hastalıklar arasında yer almakta
@@ -29,7 +31,9 @@ import { products } from "../data/products.js";
               yoktur çünkü Süper COPP bir fungisit ve organik kültür
               bakterisidir.
             </p>
-            <a href="/urun/supercopp/" class="btn">Daha fazla bilgi</a>
+            <a href="/urun/supercopp/" class="btn">
+              Daha fazla bilgi
+            </a>
           </div>
           <a href="/urun/supercopp/">
             <img
@@ -53,20 +57,22 @@ import { products } from "../data/products.js";
             />
           </a>
           <div class="product-detail-text">
-            <h3>Potasgen</h3>
+            <h2>Potasgen</h2>
             <p>
-              Potashen sıvı gübre yüksek organik gübredir (NPK 8-0-15) ve bahçe,
+              Potasgen sıvı gübre yüksek organik gübredir (NPK 8-0-15) ve bahçe,
               sera ve dış mekan bitkilerinde meyvenin büyüklüğünü ve kalitesini
-              artırır. Potas, elma, domates ve çilek için renklendirici gübre
+              artırır. Potasgen, elma, domates ve çilek için renklendirici gübre
               olarak kullanılır.
             </p>
-            <a href="/urun/potasgen/" class="btn">Daha fazla bilgi</a>
+            <a href="/urun/potasgen/" class="btn">
+              Daha fazla bilgi
+            </a>
           </div>
         </div>
 
         <div class="product-detail-row product-detail-row--right">
           <div class="product-detail-text">
-            <h3>PF-Nematod</h3>
+            <h2>PF-Nematod</h2>
             <p>
               Nematod, her türlü sera, bahçe ve dış mekan bitkilerinde en yıkıcı
               hastalıklardan biridir. Nematod hastalığıyla mücadelede en önemli
@@ -74,7 +80,9 @@ import { products } from "../data/products.js";
               faydalı mikroorganizmalara ve kökün kendisine zarar vermeden yok
               etmektir ki bu da PF Nematod ile mümkündür.
             </p>
-            <a href="/urun/pf-nematod/" class="btn">Daha fazla bilgi</a>
+            <a href="/urun/pf-nematod/" class="btn">
+              Daha fazla bilgi
+            </a>
           </div>
           <a href="/urun/pf-nematod/">
             <img
@@ -90,38 +98,18 @@ import { products } from "../data/products.js";
 
       <h2>Diğer ürünler</h2>
       <div class="product-grid product-grid--3">
-        {
-          products.slice(3).map((product) => (
-            <div class="product-card">
-              <a href={`/urun/${product.slug}/`}>
-                <img
-                  src={product.image}
-                  alt={product.name}
-                  width="200"
-                  height="200"
-                  loading="lazy"
-                />
-              </a>
-              <h4>
-                <a href={`/urun/${product.slug}/`}>{product.name}</a>
-              </h4>
-            </div>
-          ))
-        }
+        {products.slice(3).map((product) => (
+          <ProductCard
+            slug={product.slug}
+            name={product.name}
+            image={product.image}
+          />
+        ))}
       </div>
     </div>
   </div>
 
-  <section class="section section-light cta-section">
-    <div class="container">
-      <h2>Bizimle konuş</h2>
-      <p>
-        Sorularınız mı var? İşletmeniz, yeni ürünleriniz ve size nasıl yardımcı
-        olabileceğimiz hakkında konuşmaya her zaman açığız.
-      </p>
-      <a href="/iletisim/" class="btn">Temasta olmak</a>
-    </div>
-  </section>
+  <CTA />
 </Layout>
 
 <style>
